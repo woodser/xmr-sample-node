@@ -2,7 +2,7 @@ import moneroTs from "monero-ts";
 main();
 async function main() {
     console.log('Sample app using monero-ts v' + moneroTs.MoneroUtils.getVersion());
-    const daemonUri = "https://node.sethforprivacy.com:443";
+    const daemonUri = "http://xmr-node.cakewallet.com:18081";
     // connect to a daemon
     console.log("Connecting to daemon");
     let daemon = await moneroTs.connectToDaemonRpc(daemonUri);
@@ -17,7 +17,8 @@ async function main() {
         restoreHeight: height - 1000,
         server: {
             uri: daemonUri,
-        }
+        },
+        proxyToWorker: true
     });
     // synchronize with progress notifications
     console.log("Synchronizing wallet");
